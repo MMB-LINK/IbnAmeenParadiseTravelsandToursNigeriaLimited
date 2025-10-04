@@ -80,6 +80,15 @@
             from { background-position: 0 0; }
             to { background-position: 800px 800px; }
         }
+
+        /* CAROUSEL STYLES */
+        .carousel-container {
+            width: 100%;
+            transform: translateX(0%); /* Controlled by JS */
+        }
+        .carousel-item {
+            flex: 0 0 100%; /* Important: Makes each item take up exactly 100% of the container width */
+        }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-white">
@@ -122,10 +131,39 @@
                 <p class="text-xl sm:text-2xl mb-8 font-light max-w-3xl mx-auto">
                     IBN AMEEN PARADISE TRAVELS AND TOURS: Over 25 Years of Excellence and Seamless Service, Registered under CAC.
                 </p>
-                <div class="inline-block rounded-lg shadow-2xl overflow-hidden transform hover:scale-[1.02] transition duration-500">
-                    <!-- Placeholder image illustrating travel and destination -->
-                    <img src="https://placehold.co/800x450/1677FF/ffffff?text=Experience+Seamless+Travel" alt="Stylized image of a stylized airplane flying over a desert at sunset, representing Hajj and global journeys" class="w-full h-auto" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1677FF/ffffff?text=Global+Travel+Expertise';" loading="lazy">
+                
+                <!-- Dynamic Image Carousel (Moving Pictures) -->
+                <div id="hero-carousel" class="relative w-full max-w-4xl mx-auto rounded-xl shadow-2xl overflow-hidden">
+                    <div class="carousel-container flex transition-transform duration-500 ease-in-out">
+                        <!-- Slide 1: Mecca (Sacred Journey) -->
+                        <div class="carousel-item">
+                            <!-- Image of the Holy Kaaba -->
+                            <img src="https://github.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/blob/main/The%20Holy%20Kaaba.jpg?raw=true" 
+                                 alt="The Holy Kaaba in Mecca, representing Hajj and Umrah" 
+                                 class="w-full h-auto object-cover" 
+                                 loading="lazy"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x450/4B5563/FCD34D?text=Image+Load+Error';"
+                                 style="height: 450px; object-fit: cover;"> <!-- Added fixed height for visual consistency with placeholder -->
+                        </div>
+                        
+                        <!-- Slide 2: Qatar/Airplane (Ticketing) - UPDATED IMAGE HERE -->
+                        <div class="carousel-item">
+                            <!-- Updated with the global ticketing image -->
+                            <img src="https://github.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/blob/main/QATAR%20AND%20GLOBAL%20TICKETING.jpg?raw=true" 
+                                 alt="Professional representation of global ticketing and Qatar travel services" 
+                                 class="w-full h-auto object-cover" 
+                                 loading="lazy"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x450/EAB308/1F2937?text=Image+Load+Error';"
+                                 style="height: 450px; object-fit: cover;"> <!-- Added fixed height for visual consistency -->
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Indicators (Dots) -->
+                    <div id="carousel-dots" class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                        <!-- Dots will be populated by JavaScript -->
+                    </div>
                 </div>
+                <!-- END Dynamic Image Carousel -->
             </div>
         </section>
 
@@ -152,8 +190,8 @@
                     <!-- Credibility Card 3: Specialized Expertise -->
                     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-secondary-gold">
                         <i data-lucide="plane" class="w-8 h-8 text-secondary-gold mb-3"></i>
-                        <h3 class="text-xl font-semibold mb-2">Sacred & Global Travel</h3>
-                        <p class="text-gray-600">Our core strength is in seamless Hajj and Umrah services, complemented by expertise in Qatar, Dubai, and global ticketing.</p>
+                        <h3 class="text-semibold mb-2">Sacred & Global Travel</h3>
+                        <p class="text-gray-600">Our core strength is in seamless Hajj and Umrah services, complemented by expertise in Qatar and global ticketing.</p>
                     </div>
                 </div>
             </div>
@@ -181,7 +219,7 @@
                             <i data-lucide="plane-takeoff" class="w-6 h-6 text-primary-blue"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-gray-900">Executive Global Ticketing & Logistics</h3>
-                        <p class="text-gray-700 text-sm">Access to premium fares, complex multi-city itineraries, and 24/7 flight monitoring. Specialists in corporate and leisure travel to Qatar, Dubai, and beyond, ensuring optimal routes.</p>
+                        <p class="text-gray-700 text-sm">Access to premium fares, complex multi-city itineraries, and 24/7 flight monitoring. Specialists in corporate and leisure travel to Qatar and beyond, ensuring optimal routes.</p>
                     </div>
 
                     <!-- Card 3: Crucial Service: Visa & Documentation - STRESS-FREE FOCUS -->
@@ -190,7 +228,7 @@
                             <i data-lucide="file-check" class="w-6 h-6 text-secondary-gold"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-gray-900">Stress-Free Visa & Documentation</h3>
-                        <p class="text-gray-700 text-sm">Complete handling of visa applications (including Saudi Arabia, UAE, and key destinations), securing necessary travel insurance, and passport renewal assistance. Guaranteed submission integrity.</p>
+                        <p class="text-gray-700 text-sm">Complete handling of visa applications (including Saudi Arabia and key destinations), securing necessary travel insurance, and passport renewal assistance. Guaranteed submission integrity.</p>
                     </div>
                 </div>
             </div>
@@ -213,7 +251,7 @@
                     <!-- Testimonial 2: Ticketing Focus -->
                     <div class="bg-secondary-gold/5 p-6 rounded-xl shadow-xl border-l-4 border-secondary-gold">
                         <i data-lucide="quote" class="w-6 h-6 text-secondary-gold mb-3"></i>
-                        <p class="text-gray-700 italic mb-4">"I used their ticketing service for my trip to Dubai. The price was the best I found, and the process was quick and professional. Highly recommend Mrs. Bilikis' team for their prompt responses!"</p>
+                        <p class="text-gray-700 italic mb-4">"I used their ticketing service for my trip. The price was the best I found, and the process was quick and professional. Highly recommend Mrs. Bilikis' team for their prompt responses!"</p>
                         <p class="font-semibold text-sm text-gray-800">- Mr. Ken N., Port Harcourt</p>
                     </div>
                     
@@ -238,7 +276,8 @@
                     
                     <!-- 1. CEO/MD Card (Expanded Description) -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl text-center border-b-8 border-primary-blue">
-                        <img src="https://raw.githubusercontent.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/refs/heads/main/CEO%20PICTURE1.jfif" 
+                        <!-- CEO image URL previously provided and retained -->
+                        <img src="https://raw.githubusercontent.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/refs/heads/main/CEO%20PICTURE2.jfif" 
                              alt="Alhaji Rasheed Abolaji Ameen, CEO" 
                              class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-secondary-gold shadow-lg"
                              onerror="this.onerror=null; this.src='https://placehold.co/128x128/cccccc/333333?text=CEO+Photo';" 
@@ -253,6 +292,7 @@
                     
                     <!-- 2. Director Card: Hajia Bunmi Olufunmilayo Ameen (Administration) -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl text-center border-b-8 border-secondary-gold">
+                        <!-- UPDATED IMAGE SRC HERE with the provided URL -->
                         <img src="https://raw.githubusercontent.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/refs/heads/main/OLUFUNMILAYO%20BUNMI%20AMEEN%20PIC.jfif" 
                              alt="Hajia Bunmi Olufunmilayo Ameen, Director" 
                              class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-primary-blue shadow-lg"
@@ -268,6 +308,7 @@
 
                     <!-- 3. Director Card: Rasheedat Oluwapelumi Ameen (Finance & Compliance) -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl text-center border-b-8 border-primary-blue">
+                        <!-- Image SRC retained from previous update -->
                         <img src="https://github.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/blob/main/Rasheedah%20Ameen%20Oluwapelumi%20pic.JPG?raw=true" 
                              alt="Rasheedat Oluwapelumi Ameen, Director" 
                              class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-secondary-gold shadow-lg"
@@ -281,11 +322,13 @@
                         </p>
                     </div>
                     
-                    <!-- 4. Director Card: Mr. Mohammad Faiz Tobiloba Ameen (Travel & Partnerships - PHOTO PENDING) -->
+                    <!-- 4. Director Card: Mr. Mohammad Faiz Tobiloba Ameen (Travel & Partnerships) -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl text-center border-b-8 border-secondary-gold">
-                        <img src="https://placehold.co/128x128/999999/ffffff?text=Photo+Pending" 
-                             alt="Mohammad Faiz Tobiloba Ameen, Director" 
+                        <!-- Image SRC for Faiz Tobiloba Ameen -->
+                        <img src="https://raw.githubusercontent.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/refs/heads/main/FAIZ%20TOBiloba%20ameen%20picture.jfif"
+                             alt="Mohammad Faiz Tobiloba Ameen, Director"
                              class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-primary-blue shadow-lg"
+                             onerror="this.onerror=null; this.src='https://placehold.co/128x128/999999/ffffff?text=Director+Photo';"
                              loading="lazy">
                             
                         <h3 class="text-xl font-bold text-gray-900">Mr. Mohammad Faiz Tobiloba Ameen</h3>
@@ -297,6 +340,7 @@
                     
                     <!-- 5. Director Card: Al-Ameen Ayodele Ameen (Business Development) -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl text-center border-b-8 border-primary-blue">
+                        <!-- Image SRC for Al-Ameen Ayodele Ameen -->
                         <img src="https://raw.githubusercontent.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/refs/heads/main/AL-AMEEN%20AYODELE.jfif" 
                              alt="Al-Ameen Ayodele Ameen, Director" 
                              class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-secondary-gold shadow-lg"
@@ -312,6 +356,7 @@
 
                     <!-- 6. Director Card: Abdur-rasheed Bolaji Junior Ameen (Strategic Initiatives) -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl text-center border-b-8 border-secondary-gold">
+                        <!-- Image SRC for Abdur-rasheed Bolaji Junior Ameen -->
                         <img src="https://raw.githubusercontent.com/MMB-LINK/IbnAmeenParadiseTravelsandToursNigeriaLimited/refs/heads/main/ABDUR-RASHEED%20BOLAJI%20JUNIOR%20AMEEN%20PIC.jfif" 
                              alt="Abdur-rasheed Bolaji Junior Ameen, Director" 
                              class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-primary-blue shadow-lg"
@@ -326,9 +371,6 @@
                     </div>
                 </div>
                 
-                <!-- Other Directors List (REMOVED) -->
-
-
                 <!-- Managers Grid -->
                 <h3 class="text-2xl font-bold text-center mb-8 text-primary-blue">Key Management Team</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -456,13 +498,14 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu Toggle and Lucide Icons -->
+    <!-- JavaScript for Mobile Menu Toggle, Lucide Icons, and Carousel -->
     <script>
         // Initialize Lucide Icons
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
+            startCarousel(); // Start the carousel on load
         });
 
         // Mobile Menu Toggle
@@ -492,6 +535,68 @@
                 }
             });
         });
+        
+        // --- CAROUSEL LOGIC ---
+        function startCarousel() {
+            const carousel = document.getElementById('hero-carousel');
+            if (!carousel) return;
+            
+            const container = carousel.querySelector('.carousel-container');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const dotsContainer = document.getElementById('carousel-dots');
+            let currentIndex = 0;
+            const totalItems = items.length;
+            const intervalTime = 5000; // 5 seconds
+
+            // 1. Create Navigation Dots
+            items.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white', 'opacity-50', 'transition', 'duration-300');
+                dot.addEventListener('click', () => moveToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('button');
+
+            // 2. Function to move to a specific slide
+            const moveToSlide = (index) => {
+                if (index >= totalItems) {
+                    currentIndex = 0;
+                } else if (index < 0) {
+                    currentIndex = totalItems - 1;
+                } else {
+                    currentIndex = index;
+                }
+                
+                // Update container position
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    dot.classList.remove('opacity-100', 'bg-secondary-gold');
+                    dot.classList.add('opacity-50', 'bg-white');
+                    if (i === currentIndex) {
+                        dot.classList.add('opacity-100', 'bg-secondary-gold');
+                    }
+                });
+            };
+
+            // Initialize position and first dot
+            moveToSlide(0);
+
+            // 3. Auto-play functionality
+            let autoPlayInterval = setInterval(() => {
+                moveToSlide(currentIndex + 1);
+            }, intervalTime);
+
+            // Stop auto-play on hover (better UX)
+            carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+            carousel.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => {
+                    moveToSlide(currentIndex + 1);
+                }, intervalTime);
+            });
+        }
     </script>
 </body>
 </html>
